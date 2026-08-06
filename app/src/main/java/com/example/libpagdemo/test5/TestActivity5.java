@@ -1,4 +1,4 @@
-package com.example.libpagdemo.test4;
+package com.example.libpagdemo.test5;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  *
  */
-public class TestActivity4 extends AppCompatActivity {
+public class TestActivity5 extends AppCompatActivity {
 
     private String mPagUrl = "https://files.applecompare.com/api/direct/kQNu9ptR";
     private PAGView pagView;
@@ -36,7 +36,7 @@ public class TestActivity4 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test4);
+        setContentView(R.layout.activity_test5);
         pagView = findViewById(R.id.pag_view);
         pagView2 = findViewById(R.id.pag_view2);
         pagView3 = findViewById(R.id.pag_view3);

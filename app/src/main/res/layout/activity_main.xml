@@ -58,4 +58,16 @@
         android:onClick="onTest4"
         />
 
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:text="test5"
+        android:gravity="center"
+        android:onClick="onTest5"
+        />
+
+
 </LinearLayout>

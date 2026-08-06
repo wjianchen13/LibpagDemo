@@ -15,6 +15,7 @@ import com.example.libpagdemo.test1.TestActivity1;
 import com.example.libpagdemo.test2.TestActivity2;
 import com.example.libpagdemo.test3.TestActivity3;
 import com.example.libpagdemo.test4.TestActivity4;
+import com.example.libpagdemo.test5.TestActivity5;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onTest4(View v) {
         startActivity(new Intent(this, TestActivity4.class));
+    }
+
+    public void onTest5(View v) {
+        startActivity(new Intent(this, TestActivity5.class));
     }
 
 }
