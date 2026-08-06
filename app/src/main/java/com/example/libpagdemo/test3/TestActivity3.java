@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.libpagdemo.R;
@@ -37,34 +38,7 @@ public class TestActivity3 extends AppCompatActivity {
     }
 
     public void onTest1(View v) {
-        CustomTarget<PAGFile> target = new CustomTarget<PAGFile>() {
-            @Override
-            public void onResourceReady(@NonNull PAGFile pagFile, @Nullable Transition<? super PAGFile> transition) {
-                testEditText("replacement test11", pagFile, pagView);
-                pagView.setComposition(pagFile);
-                pagView.setRepeatCount(0);
-                pagView.play();
-            }
-
-            @Override
-            public void onLoadCleared(@Nullable Drawable placeholder) {
-                if (pagView != null) {
-                    pagView.stop();
-                    pagView.setComposition(null);
-                }
-            }
-        };
-
-        Object tag = v.getTag();
-        if (tag instanceof CustomTarget) {
-            Glide.with(this).clear((CustomTarget<?>) tag);
-        }
-
-        Glide.with(this)
-                .as(PAGFile.class)
-                .load(mPagUrl)
-                .into(target);
-        v.setTag(target);
+        loadPag(v, pagView, "replacement test11");
     }
 
     /**
@@ -72,35 +46,7 @@ public class TestActivity3 extends AppCompatActivity {
      * @param v
      */
     public void onTest2(View v) {
-        CustomTarget<PAGFile> target = new CustomTarget<PAGFile>() {
-            @Override
-            public void onResourceReady(@NonNull PAGFile pagFile, @Nullable Transition<? super PAGFile> transition) {
-                testEditText("replacement test22", pagFile, pagView2);
-                pagView2.setComposition(pagFile);
-                pagView2.setRepeatCount(0);
-                pagView2.play();
-            }
-
-            @Override
-            public void onLoadCleared(@Nullable Drawable placeholder) {
-                if (pagView2 != null) {
-                    pagView2.stop();
-                    pagView2.setComposition(null);
-                }
-            }
-        };
-
-        Object tag = v.getTag();
-        if (tag instanceof CustomTarget) {
-            Glide.with(this).clear((CustomTarget<?>) tag);
-        }
-
-        Glide.with(this)
-                .as(PAGFile.class)
-                .load(mPagUrl)
-                .into(target);
-        v.setTag(target);
-
+        loadPag(v, pagView2, "replacement test22");
     }
 
     /**
@@ -118,34 +64,43 @@ public class TestActivity3 extends AppCompatActivity {
      * @param v
      */
     public void onTest3(View v) {
-        CustomTarget<PAGFile> target = new CustomTarget<PAGFile>() {
+        loadPag(v, pagView3, "replacement test33");
+    }
+
+    private void loadPag(View triggerView, PAGView targetView, String text) {
+        CustomTarget<byte[]> target = new CustomTarget<byte[]>() {
             @Override
-            public void onResourceReady(@NonNull PAGFile pagFile, @Nullable Transition<? super PAGFile> transition) {
-                testEditText("replacement test33", pagFile, pagView3);
-                pagView3.setComposition(pagFile);
-                pagView3.setRepeatCount(0);
-                pagView3.play();
+            public void onResourceReady(@NonNull byte[] bytes, @Nullable Transition<? super byte[]> transition) {
+                PAGFile pagFile = PAGFile.Load(bytes);
+                if (pagFile == null) {
+                    targetView.stop();
+                    targetView.setComposition(null);
+                    return;
+                }
+                testEditText(text, pagFile, targetView);
+                targetView.setComposition(pagFile);
+                targetView.setRepeatCount(0);
+                targetView.play();
             }
 
             @Override
             public void onLoadCleared(@Nullable Drawable placeholder) {
-                if (pagView3 != null) {
-                    pagView3.stop();
-                    pagView3.setComposition(null);
-                }
+                targetView.stop();
+                targetView.setComposition(null);
             }
         };
 
-        Object tag = v.getTag();
+        Object tag = triggerView.getTag();
         if (tag instanceof CustomTarget) {
             Glide.with(this).clear((CustomTarget<?>) tag);
         }
 
         Glide.with(this)
-                .as(PAGFile.class)
+                .as(byte[].class)
                 .load(mPagUrl)
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .into(target);
-        v.setTag(target);
+        triggerView.setTag(target);
     }
 
     /**
@@ -162,6 +117,14 @@ public class TestActivity3 extends AppCompatActivity {
         if (pagView != null) {
             pagView.stop();
             pagView.freeCache();
+        }
+        if (pagView2 != null) {
+            pagView2.stop();
+            pagView2.freeCache();
+        }
+        if (pagView3 != null) {
+            pagView3.stop();
+            pagView3.freeCache();
         }
     }
 }

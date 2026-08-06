@@ -26,6 +26,7 @@ public class TestActivity2 extends AppCompatActivity {
     private PAGView pagView;
     private PAGView pagView2;
     private PAGView pagView3;
+    private PAGFile mPagFile = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class TestActivity2 extends AppCompatActivity {
             @Override
             public void onResourceReady(@NonNull PAGFile pagFile, @Nullable Transition<? super PAGFile> transition) {
                 testEditText("replacement test11", pagFile, pagView);
+                mPagFile = pagFile;
                 pagView.setComposition(pagFile);
                 pagView.setRepeatCount(0);
                 pagView.play();
@@ -72,35 +74,38 @@ public class TestActivity2 extends AppCompatActivity {
      * @param v
      */
     public void onTest2(View v) {
-        CustomTarget<PAGFile> target = new CustomTarget<PAGFile>() {
-            @Override
-            public void onResourceReady(@NonNull PAGFile pagFile, @Nullable Transition<? super PAGFile> transition) {
-                testEditText("replacement test22", pagFile, pagView2);
-                pagView2.setComposition(pagFile);
-                pagView2.setRepeatCount(0);
-                pagView2.play();
-            }
-
-            @Override
-            public void onLoadCleared(@Nullable Drawable placeholder) {
-                if (pagView2 != null) {
-                    pagView2.stop();
-                    pagView2.setComposition(null);
-                }
-            }
-        };
-
-        Object tag = v.getTag();
-        if (tag instanceof CustomTarget) {
-            Glide.with(this).clear((CustomTarget<?>) tag);
-        }
-
-        Glide.with(this)
-                .as(PAGFile.class)
-                .load(mPagUrl)
-                .into(target);
-        v.setTag(target);
-
+//        CustomTarget<PAGFile> target = new CustomTarget<PAGFile>() {
+//            @Override
+//            public void onResourceReady(@NonNull PAGFile pagFile, @Nullable Transition<? super PAGFile> transition) {
+//                testEditText("replacement test22", pagFile, pagView2);
+//                pagView2.setComposition(pagFile);
+//                pagView2.setRepeatCount(0);
+//                pagView2.play();
+//            }
+//
+//            @Override
+//            public void onLoadCleared(@Nullable Drawable placeholder) {
+//                if (pagView2 != null) {
+//                    pagView2.stop();
+//                    pagView2.setComposition(null);
+//                }
+//            }
+//        };
+//
+//        Object tag = v.getTag();
+//        if (tag instanceof CustomTarget) {
+//            Glide.with(this).clear((CustomTarget<?>) tag);
+//        }
+//
+//        Glide.with(this)
+//                .as(PAGFile.class)
+//                .load(mPagUrl)
+//                .into(target);
+//        v.setTag(target);
+//        mPagFile = pagFile;
+        pagView2.setComposition(mPagFile);
+        pagView2.setRepeatCount(0);
+        pagView2.play();
     }
 
     /**

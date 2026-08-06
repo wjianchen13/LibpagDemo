@@ -10,6 +10,8 @@ import com.example.libpagdemo.test1.PAGData1;
 import com.example.libpagdemo.test1.PAGFileBufferDecoder1;
 import com.example.libpagdemo.test1.PAGFileStreamDecoder1;
 import com.example.libpagdemo.test1.PAGFileToPAGDataTranscoder1;
+import com.example.libpagdemo.test3.PAGBytesBufferDecoder3;
+import com.example.libpagdemo.test3.PAGBytesStreamDecoder3;
 
 import org.libpag.PAGFile;
 
@@ -47,6 +49,8 @@ public class MyAppGlideModule extends AppGlideModule {
     registry.prepend(ByteBuffer.class, PAGFile.class, new PAGFileBufferDecoder1());
     registry.prepend(InputStream.class, PAGFile.class, new PAGFileStreamDecoder1());
     registry.register(PAGFile.class, PAGData1.class, new PAGFileToPAGDataTranscoder1());
+    registry.prepend(ByteBuffer.class, byte[].class, new PAGBytesBufferDecoder3());
+    registry.prepend(InputStream.class, byte[].class, new PAGBytesStreamDecoder3());
 
   }
 
