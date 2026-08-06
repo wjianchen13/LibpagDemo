@@ -1,5 +1,6 @@
 package com.example.libpagdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -10,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.libpagdemo.databinding.ActivityMainBinding;
+import com.example.libpagdemo.test1.TestActivity1;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onTest1(View v) {
-
+        startActivity(new Intent(this, TestActivity1.class));
     }
 
 
