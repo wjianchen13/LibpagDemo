@@ -26,7 +26,7 @@
         </activity>
         <activity android:name=".test1.TestActivity1" />
         <activity android:name=".test2.TestActivity2" />
-
+        <activity android:name=".test3.TestActivity3" />
 
     </application>
 
