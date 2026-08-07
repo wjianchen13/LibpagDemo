@@ -24,7 +24,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
- *
+ * asFile 重新解析成byte
  */
 public class TestActivity4 extends AppCompatActivity {
 

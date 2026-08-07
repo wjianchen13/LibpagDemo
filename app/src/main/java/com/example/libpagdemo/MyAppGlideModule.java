@@ -6,12 +6,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Registry;
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;
-import com.example.libpagdemo.test1.PAGData1;
-import com.example.libpagdemo.test1.PAGFileBufferDecoder1;
-import com.example.libpagdemo.test1.PAGFileStreamDecoder1;
-import com.example.libpagdemo.test1.PAGFileToPAGDataTranscoder1;
-import com.example.libpagdemo.test3.PAGBytesBufferDecoder3;
-import com.example.libpagdemo.test3.PAGBytesStreamDecoder3;
+import com.example.libpagdemo.pag_loader.PAGData1;
+import com.example.libpagdemo.pag_loader.PAGFileBufferDecoder1;
+import com.example.libpagdemo.pag_loader.PAGFileStreamDecoder1;
+import com.example.libpagdemo.pag_loader.PAGFileToPAGDataTranscoder1;
+import com.example.libpagdemo.pag_loader.PAGBytesBufferDecoder3;
+import com.example.libpagdemo.pag_loader.PAGBytesStreamDecoder3;
 
 import org.libpag.PAGFile;
 

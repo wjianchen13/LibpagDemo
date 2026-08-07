@@ -21,7 +21,7 @@ import org.libpag.PAGView;
 import java.io.File;
 
 /**
- *
+ * PAGFile.LoadAsync
  */
 public class TestActivity5 extends AppCompatActivity {
 

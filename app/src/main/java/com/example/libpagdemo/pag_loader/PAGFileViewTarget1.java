@@ -1,4 +1,4 @@
-package com.example.libpagdemo.test1;
+package com.example.libpagdemo.pag_loader;
 
 import android.graphics.drawable.Drawable;
 
@@ -11,7 +11,7 @@ import com.bumptech.glide.request.transition.Transition;
 import org.libpag.PAGFile;
 import org.libpag.PAGView;
 
-public class PAGDataViewTarget1 extends CustomViewTarget<PAGView, PAGData1> {
+public class PAGFileViewTarget1 extends CustomViewTarget<PAGView, PAGFile> {
 
     /**
      * PAGFile 就绪回调，在设置到 PAGView 之前调用
@@ -23,22 +23,22 @@ public class PAGDataViewTarget1 extends CustomViewTarget<PAGView, PAGData1> {
 
     private final OnPagFileReadyListener listener;
 
-    public PAGDataViewTarget1(@NonNull PAGView view) {
+    public PAGFileViewTarget1(@NonNull PAGView view) {
         this(view, null);
     }
 
-    public PAGDataViewTarget1(@NonNull PAGView view, @Nullable OnPagFileReadyListener listener) {
+    public PAGFileViewTarget1(@NonNull PAGView view, @Nullable OnPagFileReadyListener listener) {
         super(view);
         this.listener = listener;
     }
 
     @Override
-    public void onResourceReady(@NonNull PAGData1 resource, @Nullable Transition<? super PAGData1> transition) {
+    public void onResourceReady(@NonNull PAGFile resource, @Nullable Transition<? super PAGFile> transition) {
         if(listener != null) {
-            listener.onReady(resource.pagFile);
+            listener.onReady(resource);
         }
         PAGView pagView = getView();
-        pagView.setComposition(resource.pagFile);
+        pagView.setComposition(resource);
         pagView.setRepeatCount(0);
         pagView.play();
     }
@@ -56,5 +56,6 @@ public class PAGDataViewTarget1 extends CustomViewTarget<PAGView, PAGData1> {
         pagView.stop();
         pagView.setComposition(null);
     }
+
 
 }

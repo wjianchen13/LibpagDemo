@@ -12,12 +12,15 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.libpagdemo.R;
+import com.example.libpagdemo.pag_loader.PAGData1;
+import com.example.libpagdemo.pag_loader.PAGDataViewTarget1;
+import com.example.libpagdemo.pag_loader.PAGFileViewTarget1;
 
 import org.libpag.PAGFile;
 import org.libpag.PAGView;
 
 /**
- *
+ * 加载插件基础使用
  */
 public class TestActivity1 extends AppCompatActivity {
 

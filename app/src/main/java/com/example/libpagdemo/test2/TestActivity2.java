@@ -18,7 +18,7 @@ import org.libpag.PAGText;
 import org.libpag.PAGView;
 
 /**
- *
+ * 同一个PAGFile设置到多个不同的PAGView，前一个PAGView会不显示
  */
 public class TestActivity2 extends AppCompatActivity {
 

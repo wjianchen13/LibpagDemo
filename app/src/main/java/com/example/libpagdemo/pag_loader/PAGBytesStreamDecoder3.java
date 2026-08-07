@@ -1,4 +1,4 @@
-package com.example.libpagdemo.test3;
+package com.example.libpagdemo.pag_loader;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -1,4 +1,4 @@
-package com.example.libpagdemo.test1;
+package com.example.libpagdemo.pag_loader;
 
 import org.libpag.PAGFile;
 

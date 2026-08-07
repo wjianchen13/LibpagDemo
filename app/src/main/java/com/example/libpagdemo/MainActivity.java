@@ -34,22 +34,42 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * 加载插件基础使用
+     * @param v
+     */
     public void onTest1(View v) {
         startActivity(new Intent(this, TestActivity1.class));
     }
 
+    /**
+     * PAGFile设置到多个不同的PAGView
+     * @param v
+     */
     public void onTest2(View v) {
         startActivity(new Intent(this, TestActivity2.class));
     }
 
+    /**
+     * load bytes 每次加载不同的PAGFile对象
+     * @param v
+     */
     public void onTest3(View v) {
         startActivity(new Intent(this, TestActivity3.class));
     }
 
+    /**
+     * asFile 重新解析成byte
+     * @param v
+     */
     public void onTest4(View v) {
         startActivity(new Intent(this, TestActivity4.class));
     }
 
+    /**
+     * PAGFile.LoadAsync 异步解析
+     * @param v
+     */
     public void onTest5(View v) {
         startActivity(new Intent(this, TestActivity5.class));
     }

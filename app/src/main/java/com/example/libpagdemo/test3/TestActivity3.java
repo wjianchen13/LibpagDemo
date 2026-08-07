@@ -19,7 +19,7 @@ import org.libpag.PAGText;
 import org.libpag.PAGView;
 
 /**
- *
+ * load bytes 每次加载不同的PAGFile对象
  */
 public class TestActivity3 extends AppCompatActivity {
 

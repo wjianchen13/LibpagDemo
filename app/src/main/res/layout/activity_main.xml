@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
-        android:text="test1"
+        android:text="加载插件基础使用"
         android:gravity="center"
         android:onClick="onTest1"
         />
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
-        android:text="test2"
+        android:text="PAGFile设置到多个不同的PAGView"
         android:gravity="center"
         android:onClick="onTest2"
         />
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
-        android:text="test3"
+        android:text="load bytes 每次加载不同的PAGFile对象"
         android:gravity="center"
         android:onClick="onTest3"
         />
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
-        android:text="test4"
+        android:text="asFile 重新解析成byte"
         android:gravity="center"
         android:onClick="onTest4"
         />
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
-        android:text="test5"
+        android:text="PAGFile.LoadAsync 异步解析"
         android:gravity="center"
         android:onClick="onTest5"
         />
