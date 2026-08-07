@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textAllCaps="false"
-        android:text="使用Glide 设置不同的key，达到磁盘缓存和内存缓存的效果"
+        android:text="使用PAGFileViewTarget1方式加载"
         android:gravity="center"
         android:onClick="onTest8"
         />

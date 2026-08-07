@@ -18,6 +18,7 @@ import com.example.libpagdemo.test4.TestActivity4;
 import com.example.libpagdemo.test5.TestActivity5;
 import com.example.libpagdemo.test6.TestActivity6;
 import com.example.libpagdemo.test7.TestActivity7;
+import com.example.libpagdemo.test8.TestActivity8;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -93,11 +94,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 使用Glide 设置不同的key，达到磁盘缓存和内存缓存的效果
+     * 使用PAGFileViewTarget1方式加载
      * @param v
      */
     public void onTest8(View v) {
-        startActivity(new Intent(this, TestActivity7.class));
+        startActivity(new Intent(this, TestActivity8.class));
     }
 
 

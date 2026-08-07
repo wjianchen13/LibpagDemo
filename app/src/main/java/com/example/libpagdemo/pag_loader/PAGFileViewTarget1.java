@@ -40,6 +40,7 @@ public class PAGFileViewTarget1 extends CustomViewTarget<PAGView, PAGFile> {
         PAGView pagView = getView();
         pagView.setComposition(resource);
         pagView.setRepeatCount(0);
+        pagView.setProgress(0);
         pagView.play();
     }
 
