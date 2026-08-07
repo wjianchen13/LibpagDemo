@@ -16,6 +16,8 @@ import com.example.libpagdemo.test2.TestActivity2;
 import com.example.libpagdemo.test3.TestActivity3;
 import com.example.libpagdemo.test4.TestActivity4;
 import com.example.libpagdemo.test5.TestActivity5;
+import com.example.libpagdemo.test6.TestActivity6;
+import com.example.libpagdemo.test7.TestActivity7;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -79,7 +81,15 @@ public class MainActivity extends AppCompatActivity {
      * @param v
      */
     public void onTest6(View v) {
-        startActivity(new Intent(this, TestActivity5.class));
+        startActivity(new Intent(this, TestActivity6.class));
+    }
+
+    /**
+     * 使用Glide 设置不同的key，达到磁盘缓存和内存缓存的效果
+     * @param v
+     */
+    public void onTest7(View v) {
+        startActivity(new Intent(this, TestActivity7.class));
     }
 
 }

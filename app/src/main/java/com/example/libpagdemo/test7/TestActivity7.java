@@ -1,4 +1,4 @@
-package com.example.libpagdemo.test6;
+package com.example.libpagdemo.test7;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -21,9 +21,9 @@ import org.libpag.PAGText;
 import org.libpag.PAGView;
 
 /**
- * 使用Glide 设置不同的key，达到内存缓存的效果
+ * 使用Glide 设置不同的key，达到磁盘缓存和内存缓存的效果
  */
-public class TestActivity6 extends AppCompatActivity {
+public class TestActivity7 extends AppCompatActivity {
 
     private static final Option<String> PAG_MEMORY_KEY =
             Option.memory("com.example.libpagdemo.pag_memory_key");
@@ -36,7 +36,7 @@ public class TestActivity6 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test6);
+        setContentView(R.layout.activity_test7);
         pagView = findViewById(R.id.pag_view);
         pagView2 = findViewById(R.id.pag_view2);
         pagView3 = findViewById(R.id.pag_view3);
