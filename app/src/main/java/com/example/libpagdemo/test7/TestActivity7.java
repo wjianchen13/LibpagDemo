@@ -9,11 +9,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.Option;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.bumptech.glide.signature.ObjectKey;
 import com.example.libpagdemo.R;
 
 import org.libpag.PAGFile;
@@ -24,9 +23,6 @@ import org.libpag.PAGView;
  * 使用Glide 设置不同的key，达到磁盘缓存和内存缓存的效果
  */
 public class TestActivity7 extends AppCompatActivity {
-
-    private static final Option<String> PAG_MEMORY_KEY =
-            Option.memory("com.example.libpagdemo.pag_memory_key");
 
     private String mPagUrl = "https://files.applecompare.com/api/direct/kQNu9ptR";
     private PAGView pagView;
@@ -97,9 +93,8 @@ public class TestActivity7 extends AppCompatActivity {
         Glide.with(this)
                 .as(PAGFile.class)
                 .load(mPagUrl)
-                .apply(new RequestOptions()
-                        .set(PAG_MEMORY_KEY, viewKey + ":" + text)
-                        .diskCacheStrategy(DiskCacheStrategy.DATA))
+                .signature(new ObjectKey(viewKey + ":" + text))
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .into(target);
         triggerView.setTag(target);
     }
