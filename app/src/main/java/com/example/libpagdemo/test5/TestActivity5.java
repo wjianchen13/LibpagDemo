@@ -18,10 +18,7 @@ import org.libpag.PAGFile;
 import org.libpag.PAGText;
 import org.libpag.PAGView;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 
 /**
  *
@@ -32,6 +29,9 @@ public class TestActivity5 extends AppCompatActivity {
     private PAGView pagView;
     private PAGView pagView2;
     private PAGView pagView3;
+    private int requestId1;
+    private int requestId2;
+    private int requestId3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,8 @@ public class TestActivity5 extends AppCompatActivity {
     }
 
     public void onTest1(View v) {
-        loadPag(v, pagView, "replacement test11");
+        requestId1++;
+        loadPag(v, pagView, "replacement test11", requestId1, 1);
     }
 
     /**
@@ -51,7 +52,8 @@ public class TestActivity5 extends AppCompatActivity {
      * @param v
      */
     public void onTest2(View v) {
-        loadPag(v, pagView2, "replacement test22");
+        requestId2++;
+        loadPag(v, pagView2, "replacement test22", requestId2, 2);
     }
 
     /**
@@ -69,31 +71,33 @@ public class TestActivity5 extends AppCompatActivity {
      * @param v
      */
     public void onTest3(View v) {
-        loadPag(v, pagView3, "replacement test33");
+        requestId3++;
+        loadPag(v, pagView3, "replacement test33", requestId3, 3);
     }
 
-    private void loadPag(View triggerView, PAGView targetView, String text) {
+    private void loadPag(View triggerView, PAGView targetView, String text, int requestId, int targetIndex) {
         CustomTarget<File> target = new CustomTarget<File>() {
             @Override
             public void onResourceReady(@NonNull File file, @Nullable Transition<? super File> transition) {
-                byte[] bytes;
-                try {
-                    bytes = fileToBytes(file);
-                } catch (IOException e) {
-                    targetView.stop();
-                    targetView.setComposition(null);
-                    return;
-                }
-                PAGFile pagFile = PAGFile.Load(bytes);
-                if (pagFile == null) {
-                    targetView.stop();
-                    targetView.setComposition(null);
-                    return;
-                }
-                testEditText(text, pagFile, targetView);
-                targetView.setComposition(pagFile);
-                targetView.setRepeatCount(0);
-                targetView.play();
+                PAGFile.LoadAsync(file.getAbsolutePath(), pagFile -> {
+                    runOnUiThread(() -> {
+                        if (isFinishing() || isDestroyed()) {
+                            return;
+                        }
+                        if (!isLatestRequest(requestId, targetIndex)) {
+                            return;
+                        }
+                        if (pagFile == null) {
+                            targetView.stop();
+                            targetView.setComposition(null);
+                            return;
+                        }
+                        testEditText(text, pagFile, targetView);
+                        targetView.setComposition(pagFile);
+                        targetView.setRepeatCount(0);
+                        targetView.play();
+                    });
+                });
             }
 
             @Override
@@ -116,18 +120,13 @@ public class TestActivity5 extends AppCompatActivity {
         triggerView.setTag(target);
     }
 
-    private byte[] fileToBytes(File file) throws IOException {
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        FileInputStream inputStream = new FileInputStream(file);
-        try {
-            byte[] temp = new byte[8192];
-            int len;
-            while ((len = inputStream.read(temp)) != -1) {
-                buffer.write(temp, 0, len);
-            }
-            return buffer.toByteArray();
-        } finally {
-            inputStream.close();
+    private boolean isLatestRequest(int requestId, int targetIndex) {
+        if (targetIndex == 1) {
+            return requestId == requestId1;
+        } else if (targetIndex == 2) {
+            return requestId == requestId2;
+        } else {
+            return requestId == requestId3;
         }
     }
 

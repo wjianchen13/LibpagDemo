@@ -13,8 +13,25 @@ import java.io.InputStream;
 
 public class PAGBytesStreamDecoder3 implements ResourceDecoder<InputStream, byte[]> {
 
+    private static final byte[] PAG_MAGIC = {0x50, 0x41, 0x47};
+
     @Override
-    public boolean handles(@NonNull InputStream source, @NonNull Options options) {
+    public boolean handles(@NonNull InputStream source, @NonNull Options options) throws IOException {
+        if (!source.markSupported()) {
+            return false;
+        }
+        source.mark(PAG_MAGIC.length);
+        byte[] header = new byte[PAG_MAGIC.length];
+        int read = source.read(header);
+        source.reset();
+        if (read < PAG_MAGIC.length) {
+            return false;
+        }
+        for (int i = 0; i < PAG_MAGIC.length; i++) {
+            if (header[i] != PAG_MAGIC[i]) {
+                return false;
+            }
+        }
         return true;
     }
 
