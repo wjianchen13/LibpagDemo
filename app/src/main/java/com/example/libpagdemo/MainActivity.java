@@ -92,4 +92,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, TestActivity7.class));
     }
 
+    /**
+     * 使用Glide 设置不同的key，达到磁盘缓存和内存缓存的效果
+     * @param v
+     */
+    public void onTest8(View v) {
+        startActivity(new Intent(this, TestActivity7.class));
+    }
+
+
 }

@@ -21,6 +21,10 @@ import org.libpag.PAGView;
 
 /**
  * 使用Glide 设置不同的key，达到磁盘缓存和内存缓存的效果
+ * 这种方法会导致同一个url，也会产生多个不一样的磁盘缓存文件
+ * 打开cmd可以用下面的命令查看缓存的文件:
+ * adb shell run-as com.example.libpagdemo ls -l cache/image_manager_disk_cache
+ * 会导致磁盘缓存的性能问题
  */
 public class TestActivity7 extends AppCompatActivity {
 
