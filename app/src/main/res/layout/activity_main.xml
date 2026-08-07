@@ -69,5 +69,14 @@
         android:onClick="onTest5"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:text="使用Glide 设置不同的key，达到内存缓存的效果"
+        android:gravity="center"
+        android:onClick="onTest6"
+        />
 
 </LinearLayout>
