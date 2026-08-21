@@ -19,6 +19,7 @@ import com.example.libpagdemo.test5.TestActivity5;
 import com.example.libpagdemo.test6.TestActivity6;
 import com.example.libpagdemo.test7.TestActivity7;
 import com.example.libpagdemo.test8.TestActivity8;
+import com.example.libpagdemo.test9.TestActivity9;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -99,6 +100,15 @@ public class MainActivity extends AppCompatActivity {
      */
     public void onTest8(View v) {
         startActivity(new Intent(this, TestActivity8.class));
+    }
+
+
+    /**
+     * 加载assets目录下的文件
+     * @param v
+     */
+    public void onTest9(View v) {
+        startActivity(new Intent(this, TestActivity9.class));
     }
 
 }
