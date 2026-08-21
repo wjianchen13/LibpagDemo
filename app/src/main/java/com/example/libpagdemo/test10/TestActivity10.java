@@ -1,4 +1,4 @@
-package com.example.libpagdemo.test9;
+package com.example.libpagdemo.test10;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,7 +20,7 @@ import org.libpag.PAGView;
 /**
  * 加载assets目录下的文件
  */
-public class TestActivity9 extends AppCompatActivity {
+public class TestActivity10 extends AppCompatActivity {
 
     private static final Option<String> PAG_MEMORY_KEY =
             Option.memory("com.example.libpagdemo.pag_memory_key");
@@ -33,7 +33,7 @@ public class TestActivity9 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test9);
+        setContentView(R.layout.activity_test10);
         pagView = findViewById(R.id.pag_view);
         pagView2 = findViewById(R.id.pag_view2);
         pagView3 = findViewById(R.id.pag_view3);
