@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.libpagdemo.databinding.ActivityMainBinding;
 import com.example.libpagdemo.test1.TestActivity1;
 import com.example.libpagdemo.test10.TestActivity10;
+import com.example.libpagdemo.test11.TestActivity11;
 import com.example.libpagdemo.test2.TestActivity2;
 import com.example.libpagdemo.test3.TestActivity3;
 import com.example.libpagdemo.test4.TestActivity4;
@@ -118,6 +119,14 @@ public class MainActivity extends AppCompatActivity {
      */
     public void onTest10(View v) {
         startActivity(new Intent(this, TestActivity10.class));
+    }
+
+    /**
+     * 测试项目资源
+     * @param v
+     */
+    public void onTest11(View v) {
+        startActivity(new Intent(this, TestActivity11.class));
     }
 
 }
