@@ -1,5 +1,8 @@
 package com.example.libpagdemo.test10;
 
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -14,8 +17,11 @@ import com.example.libpagdemo.R;
 import com.example.libpagdemo.pag_loader.PAGFileViewTarget1;
 
 import org.libpag.PAGFile;
-import org.libpag.PAGText;
+import org.libpag.PAGImage;
 import org.libpag.PAGView;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * 加载assets目录下的文件
@@ -24,7 +30,7 @@ public class TestActivity10 extends AppCompatActivity {
 
     private static final Option<String> PAG_MEMORY_KEY =
             Option.memory("com.example.libpagdemo.pag_memory_key");
-    private static final Uri PAG_ASSET_URI = Uri.parse("file:///android_asset/pag_replacement_text.pag");
+    private static final Uri PAG_ASSET_URI = Uri.parse("file:///android_asset/replacement.pag");
 
     private PAGView pagView;
     private PAGView pagView2;
@@ -40,7 +46,7 @@ public class TestActivity10 extends AppCompatActivity {
     }
 
     public void onTest1(View v) {
-        loadPag(v, pagView, "replacement test11", "pag_view_1");
+        loadPag(pagView, "pag_view_1");
     }
 
     /**
@@ -48,17 +54,7 @@ public class TestActivity10 extends AppCompatActivity {
      * @param v
      */
     public void onTest2(View v) {
-        loadPag(v, pagView2, "replacement test22", "pag_view_2");
-    }
-
-    /**
-     * Test edit text.
-     */
-    void testEditText(String text, PAGFile pagFile, PAGView pagView) {
-        if (pagFile == null || pagView == null || pagFile.numTexts() <= 0) return;
-        PAGText textData = pagFile.getTextData(0);
-        textData.text = text;
-        pagFile.replaceText(0, textData);
+        loadPag(pagView2, "pag_view_2");
     }
 
     /**
@@ -66,17 +62,39 @@ public class TestActivity10 extends AppCompatActivity {
      * @param v
      */
     public void onTest3(View v) {
-        loadPag(v, pagView3, "replacement test33", "pag_view_3");
+        loadPag(pagView3, "pag_view_3");
     }
 
-    private void loadPag(View triggerView, PAGView targetView, String text, String viewKey) {
+    private void loadPag(PAGView targetView, String viewKey) {
         Glide.with(this)
                 .as(PAGFile.class)
                 .load(PAG_ASSET_URI)
                 .apply(new RequestOptions()
-                        .set(PAG_MEMORY_KEY, viewKey + ":" + text)
+                        .set(PAG_MEMORY_KEY, viewKey + ":test.png")
                         .diskCacheStrategy(DiskCacheStrategy.NONE))
-                .into(new PAGFileViewTarget1(targetView, pagFile -> testEditText(text, pagFile, targetView)));
+                .into(new PAGFileViewTarget1(targetView, pagFile -> testReplaceImage(pagFile, targetView)));
+    }
+
+    /**
+     * Test replace image.
+     */
+    void testReplaceImage(PAGFile pagFile, PAGView pagView) {
+        if (pagFile == null || pagView == null || pagFile.numImages() <= 0) return;
+        pagFile.replaceImage(0, createPAGImage());
+    }
+
+    private PAGImage createPAGImage() {
+        AssetManager assetManager = getAssets();
+        try (InputStream stream = assetManager.open("test.png")) {
+            Bitmap bitmap = BitmapFactory.decodeStream(stream);
+            if (bitmap == null) {
+                return null;
+            }
+            return PAGImage.FromBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
