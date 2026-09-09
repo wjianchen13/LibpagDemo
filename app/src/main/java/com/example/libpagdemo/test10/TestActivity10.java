@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * 加载assets目录下的文件
+ * 加载assets目录下的文件，替换图片
  */
 public class TestActivity10 extends AppCompatActivity {
 

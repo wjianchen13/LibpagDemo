@@ -18,7 +18,7 @@ import org.libpag.PAGText;
 import org.libpag.PAGView;
 
 /**
- * 加载assets目录下的文件
+ * 加载assets目录下的文件，替换文字
  */
 public class TestActivity9 extends AppCompatActivity {
 

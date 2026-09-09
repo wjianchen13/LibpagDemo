@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * 加载assets目录下的文件
+     * 加载assets目录下的文件，替换文字
      * @param v
      */
     public void onTest9(View v) {
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 加载assets目录下的文件
+     * 加载assets目录下的文件，替换图片
      * @param v
      */
     public void onTest10(View v) {
