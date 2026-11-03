@@ -36,6 +36,8 @@ public class TestActivity11 extends AppCompatActivity {
     private static final Option<String> PAG_MEMORY_KEY =
             Option.memory("com.example.libpagdemo.pag_memory_key");
     private static final Uri PAG_ASSET_URI = Uri.parse("file:///android_asset/test_image.pag");
+    private static final String mUrl = "https://d.uguu.se/HcgxGKiC.pag";
+
 
     private PAGView pagView;
     private PAGView pagView2;
@@ -73,7 +75,7 @@ public class TestActivity11 extends AppCompatActivity {
     private void loadPag(PAGView targetView, String viewKey, boolean printInfo) {
         Glide.with(this)
                 .as(PAGFile.class)
-                .load(PAG_ASSET_URI)
+                .load(mUrl)
                 .apply(new RequestOptions()
                         .set(PAG_MEMORY_KEY, viewKey + ":ic_head_test.png")
                         .diskCacheStrategy(DiskCacheStrategy.NONE))

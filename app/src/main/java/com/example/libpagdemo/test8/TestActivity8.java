@@ -25,6 +25,7 @@ public class TestActivity8 extends AppCompatActivity {
             Option.memory("com.example.libpagdemo.pag_memory_key");
 
     private String mPagUrl = "https://files.applecompare.com/api/direct/kQNu9ptR";
+//    private String mPagUrl = "https://easylink.cc/o1qilg";
     private PAGView pagView;
     private PAGView pagView2;
     private PAGView pagView3;
