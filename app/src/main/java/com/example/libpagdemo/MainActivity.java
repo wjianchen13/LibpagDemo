@@ -14,6 +14,7 @@ import com.example.libpagdemo.databinding.ActivityMainBinding;
 import com.example.libpagdemo.test1.TestActivity1;
 import com.example.libpagdemo.test10.TestActivity10;
 import com.example.libpagdemo.test11.TestActivity11;
+import com.example.libpagdemo.test12.TestActivity12;
 import com.example.libpagdemo.test2.TestActivity2;
 import com.example.libpagdemo.test3.TestActivity3;
 import com.example.libpagdemo.test4.TestActivity4;
@@ -128,5 +129,15 @@ public class MainActivity extends AppCompatActivity {
     public void onTest11(View v) {
         startActivity(new Intent(this, TestActivity11.class));
     }
+
+    /**
+     * 使用Pag默认的方式加载远程资源
+     * @param v
+     */
+    public void onTest12(View v) {
+        startActivity(new Intent(this, TestActivity12.class));
+    }
+
+
 
 }

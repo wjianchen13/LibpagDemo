@@ -35,6 +35,8 @@
         <activity android:name=".test9.TestActivity9" />
         <activity android:name=".test10.TestActivity10" />
         <activity android:name=".test11.TestActivity11" />
+        <activity android:name=".test12.TestActivity12" />
+
 
 
     </application>

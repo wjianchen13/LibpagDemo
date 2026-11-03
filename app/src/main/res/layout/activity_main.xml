@@ -130,5 +130,15 @@
         android:onClick="onTest11"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:text="使用Pag默认的方式加载远程资源"
+        android:gravity="center"
+        android:onClick="onTest12"
+        />
+
 
 </LinearLayout>
